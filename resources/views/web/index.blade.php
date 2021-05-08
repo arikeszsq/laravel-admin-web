@@ -39,7 +39,8 @@
                 <li class="nav_ul_li" style="color: rgb(0, 0, 0);">时间轴</li>
                 <li class="nav_ul_li" style="color: rgb(0, 0, 0);">介绍</li>
                 <li class="nav_ul_li" style="color: rgb(0, 0, 0);">联系方式</li>
-{{--                <li style="background-color: red;"><a class=" btn btn-info" href="/admin">管理系统</a></li>--}}
+                <li style="background-color: snow;"><a class=" btn btn-info" href="/admin">管理系统</a></li>
+                <li style="background-color: lightgray;"><a class=" btn btn-info" href="/admin">任务系统</a></li>
             </ul>
         </nav>
     </div>
