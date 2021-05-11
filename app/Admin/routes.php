@@ -15,4 +15,5 @@ Route::group([
 
     $router->resource('articles', ArticleController::class);
 
+    $router->resource('news', newsController::class);
 });
