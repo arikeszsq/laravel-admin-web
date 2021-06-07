@@ -17,10 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::any('test/add', 'TestController@add');
-//Route::middleware('cors')->group(function () {
-//
-//
-//
-//});
+Route::group(['middleware'=>'cors'], function() {
+    Route::any('test/add','TestController@add');
+});
