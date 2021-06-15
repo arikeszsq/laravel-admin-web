@@ -34,4 +34,37 @@ class TestController extends Controller
             ];
         }
     }
+
+    public function count(Request $request)
+    {
+        $count = 0;
+        $current = DB::table('money_current')
+            ->get();
+        foreach ($current as $item) {
+            $count += $item->num;
+        }
+
+        $money_lists = DB::table('money')
+            ->get();
+        foreach ($money_lists as $item) {
+            if ($item->is_add == 1) {
+                $count += $item->num;
+            } else {
+                $count -= $item->num;
+            }
+        }
+        $ret = 1;
+        if ($ret) {
+            return [
+                'msg' => 'success',
+                'code' => 200,
+                'count' => $count
+            ];
+        } else {
+            return [
+                'msg' => 'failed',
+                'code' => 501
+            ];
+        }
+    }
 }
