@@ -58,7 +58,29 @@ class TestController extends Controller
             return [
                 'msg' => 'success',
                 'code' => 200,
-                'count' => $count/10000
+                'count' => $count / 10000
+            ];
+        } else {
+            return [
+                'msg' => 'failed',
+                'code' => 501
+            ];
+        }
+    }
+
+    public function lists(Request $request)
+    {
+        $all = $request->all();
+        $money_lists = DB::table('money')
+            ->orderBy('id', 'desc')
+            ->limit(20)
+            ->get();
+        $ret = 1;
+        if ($ret) {
+            return [
+                'msg' => 'success',
+                'code' => 200,
+                'list' => $money_lists
             ];
         } else {
             return [
