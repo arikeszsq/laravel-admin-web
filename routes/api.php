@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware'=>'cors'], function() {
     Route::any('test/add','TestController@add');
     Route::any('test/count','TestController@count');
-    Route::any('test/list','TestController@lists');
+    Route::any('test/getlists','TestController@getlists');
 });

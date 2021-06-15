@@ -68,7 +68,7 @@ class TestController extends Controller
         }
     }
 
-    public function lists(Request $request)
+    public function getlists(Request $request)
     {
         $all = $request->all();
         $money_lists = DB::table('money')
