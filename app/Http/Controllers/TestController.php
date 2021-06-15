@@ -58,7 +58,7 @@ class TestController extends Controller
             return [
                 'msg' => 'success',
                 'code' => 200,
-                'count' => $count
+                'count' => $count/10000
             ];
         } else {
             return [
