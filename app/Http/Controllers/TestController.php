@@ -37,20 +37,25 @@ class TestController extends Controller
 
     public function count(Request $request)
     {
-        $count = 0;
-        $current = DB::table('money_current')
-            ->get();
-        foreach ($current as $item) {
-            $count += $item->num;
+        $lists = DB::table('money_current')->get();
+        $count_in_hand = 0;
+        $count_total = 0;
+        foreach ($lists as $list) {
+            $count_total += $list->num;
+            if ($list->type == 1) {
+                $count_in_hand += $list->num;
+            }
         }
 
         $money_lists = DB::table('money')
             ->get();
         foreach ($money_lists as $item) {
             if ($item->is_add == 1) {
-                $count += $item->num;
+                $count_total += $item->num;
+                $count_in_hand += $item->num;
             } else {
-                $count -= $item->num;
+                $count_total -= $item->num;
+                $count_in_hand -= $item->num;
             }
         }
         $ret = 1;
@@ -58,7 +63,8 @@ class TestController extends Controller
             return [
                 'msg' => 'success',
                 'code' => 200,
-                'count' => $count / 10000
+                'count_tota' => $count_total,
+                'count_in_hand' => $count_in_hand
             ];
         } else {
             return [
