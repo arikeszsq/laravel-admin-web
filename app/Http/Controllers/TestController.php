@@ -95,4 +95,26 @@ class TestController extends Controller
             ];
         }
     }
+
+    public function getlistFs(Request $request)
+    {
+        $all = $request->all();
+        $money_lists = DB::table('friend_in_suzhou')
+            ->orderBy('group', 'desc')
+            ->orderBy('id', 'desc')
+            ->get();
+        $ret = 1;
+        if ($ret) {
+            return [
+                'msg' => 'success',
+                'code' => 200,
+                'list' => $money_lists
+            ];
+        } else {
+            return [
+                'msg' => 'failed',
+                'code' => 501
+            ];
+        }
+    }
 }
